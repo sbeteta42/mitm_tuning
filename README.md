@@ -38,4 +38,15 @@ cd mitm_tuning
 chmod +x install_mitm_tuning.sh
 ./install_mitm_tuning.sh
 ```
+# Contrôle des tempêtes potentielles
+- Si le port de l'attaquant dispose de Storm Control avec contrôle du trafic unicast, multicast et broadcast, une alarme matérielle peut être déclenchée car le port de l'attaquant commencera à gérer beaucoup plus de trafic que prévu par le seuil configuré lorsque MITM se produit.
 
+# Décalage TTL
+- Un décalage TTL dans la table mangle permet de masquer l'adresse IP de l'attaquant dans la trace du paquet. Les attaques MITM créent un saut redondant et, si elles sont tracées à partir d'une machine légitime, l'adresse IP de l'attaquant apparaîtra dans la trace elle-même
+
+user@kali:~$ sudo iptables -t mangle -A PREROUTING -i eth0 -J TTL --ttl-inc 1
+
+# Problèmes NAT
+- Si vous utilisez le NAT avec MITM, vous aurez besoin du module noyau nf_conntrack pour que les protocoles SIP, FTP, H.323 fonctionnent correctement, car ces protocoles ne fonctionnent pas bien avec NAT
+
+user@kali:~$ sudo modprobe nf_conntrack
