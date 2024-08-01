@@ -26,7 +26,16 @@ Vous pouvez personnaliser légèrement le noyau Linux pour gérer ce trafic de m
 
 - net.ipv4.tcp_max_syn_backlog=4096: augmente le nombre maximal de requêtes SYN entrantes pouvant attendre un accusé de réception. L'augmentation de cette valeur permet à l'hôte de gérer un plus grand nombre de requêtes de connexion entrantes, ce qui est particulièrement important dans des conditions de charge élevée.
 
--net.ipv4.tcp_window_scaling=1: Le paramètre de mise à l'échelle de la fenêtre TCP contrôle la mise à l'échelle de la fenêtre TCP. L'augmentation de la taille de la fenêtre TCP peut améliorer les performances de transfert de données dans un réseau à latence élevée ou à charge élevée. Dans TCP, chaque côté définit la taille de la fenêtre. Le nombre approprié d'octets peut être envoyé sans accusé de réception. La mise à l'échelle de la fenêtre permet d'augmenter la taille de cette fenêtre, ce qui est particulièrement utile pour les réseaux à haut débit.
+- net.ipv4.tcp_window_scaling=1: Le paramètre de mise à l'échelle de la fenêtre TCP contrôle la mise à l'échelle de la fenêtre TCP. L'augmentation de la taille de la fenêtre TCP peut améliorer les performances de transfert de données dans un réseau à latence élevée ou à charge élevée. Dans TCP, chaque côté définit la taille de la fenêtre. Le nombre approprié d'octets peut être envoyé sans accusé de réception. La mise à l'échelle de la fenêtre permet d'augmenter la taille de cette fenêtre, ce qui est particulièrement utile pour les réseaux à haut débit.
 
-# Script d'installation
+# Pré-requis
+OS: Kali avec Interface GUI
+
+# Installation
+```bash
+git clone https://github.com/sbeteta42/mitm_tuning
+cd mitm_tuning
+chmod +x install_mitm_tuning.sh
+./install_mitm_tuning.sh
+```
 
